@@ -37116,7 +37116,36 @@ if (typeof window !== 'undefined') {
 var THREE = _interopRequireWildcard(require("three"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-console.log(THREE);
+// 目标：了解three.js基本内容
+// 1,创建场景
+var scene = new THREE.Scene();
+
+//2,创建相机
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+camera.position.set(0, 0, 10);
+scene.add(camera);
+
+//添加物体
+//创建几何体
+var cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+var cubeMaterial = new THREE.MeshBasicMaterial({
+  color: '#0xffff00'
+});
+//根据几何体和材质创建物体
+var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+// cube.position.set(0,0,0)
+scene.add(cube);
+
+//初始化渲染器
+var renderer = new THREE.WebGLRenderer();
+//设置渲染的尺寸和大小
+renderer.setSize(window.innerWidth, window.innerHeight);
+//将webl渲染的canvas内容添加到body
+// console.log(renderer)
+document.body.appendChild(renderer.domElement);
+
+//使用渲染器，通过相机将场景渲染进来
+renderer.render(scene, camera);
 },{"three":"../node_modules/three/build/three.module.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -37142,7 +37171,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59859" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50424" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
